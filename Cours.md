@@ -1,6 +1,6 @@
-### Git et GitHub
+## <span style="color: blue">Git et GitHub</span>
 
-#### 1. Ligne de commande.
+### <span style="color: blue">1. Ligne de commande.</span>
 
 <span style="color: lightgreen">a) Principe et fonctionnement de l'interface en ligne de commande</span>
 
@@ -172,7 +172,8 @@ Statistiques Ping pour 216.58.201.227:
 Durée approximative des boucles en millisecondes :
     Minimum = 13ms, Maximum = 13ms, Moyenne = 13ms
 ````
-<span style="color: yellow">help</span> dans la ligne de commande pour afficher la liste des commandes qui peuvent avoir une aide disponible. Cependant, certaines commandes, comme la commande <span style="color: yellow">ping</span>, n'ont pas la possibilité de fonctionner avec help. C'est pourquoi il existe une syntaxe alternative : <span style="color: yellow">ping /?</span>.
+
+##### <span style="color: yellow">help</span> dans la ligne de commande pour afficher la liste des commandes qui peuvent avoir une aide disponible. Cependant, certaines commandes, comme la commande <span style="color: yellow">ping</span>, n'ont pas la possibilité de fonctionner avec help. C'est pourquoi il existe une syntaxe alternative : <span style="color: yellow">ping /?</span>.
 ````markdown
 help start # permet d'obtenir des informations sur la commande "start"
 ping /? # permet d'obtenir des informations sur la commande "ping"
@@ -226,18 +227,135 @@ Sur Linux, la commande <span style="color: yellow">service</span> (ou <span styl
 sudo service networking restart # cette commande permet de redémarrer le service gérant les connexions réseaux
 ````
 
+### <span style="color: blue">2. Introduction à Git.</span>
+
+<span style="color: lightgreen">a) Les systèmes de gestion de versions.</span>
+
+Un système de gestion de versions, ou VCS (Version Control System), permet de gérer les versions de nos fichiers en permettant d'accéder à leur historique à un instant T, de sauvegarder notre travail sur un serveur distant ou même de collaborer avec d'autres développeurs.
+
+Il existe plusieurs familles de VCS :
+
+Les VCS locaux (Version Control System) (que nous n'utiliserons pratiquement jamais, puisque nous aurons besoin de stocker une copie de notre base de données de versions sur un serveur distant),
+
+Les CVCS ou CVS centralisés (Centralized Version Control System), qui nous permettent de sauvegarder notre base de données sur un serveur distant et de travailler collaborativement,
+
+Les DCVS, ou CVS distribués (Distributed Version Control System), qui nous permettent d'avoir une copie locale de la base de données en cas de corruption du serveur distant et de pouvoir travailler en local sans connexion.
 
 
-<span style="color: yellow">ls</span>
+<span style="color: lightgreen">b) Les avantages de Git.</span>
+
+Git est un système de gestion de version distribué, développé il y a 15 ans pour le projet du noyau Linux. Il a été depuis continuellement amélioré et convient à tous types de projet, même les plus importants.
+
+Sa base de données locale et son système de gestion des instantanés le rendent très performant.
+
+Son système de branches et les trois états de fichiers lui permettent d'être robuste lorsqu'il s'agit de travailler sur un projet, que ce soit seul ou à plusieurs.
+
+Git gère les modifications apportées aux fichiers selon trois états : modifié, validé et indexé.
+
+- Modifié signifie que le fichier a été modifié en local, mais que ses modifications n'ont pas encore été ajoutées à la base de données locale.
+  
+
+- Indexé signifie que la version du fichier a été ajoutée au prochain lot de modifications qui seront intégrées à la base de données locale.
+
+    
+- Validé signifie que la version du fichier est présente dans la base de données locale.
+
+<span style="color: lightgreen">c) Installation et configuration.</span>
+
+<span style="color: yellow">Git</span> est disponible sous tous les systèmes d'exploitation. Sous Windows, Git met à notre disposition un outil du nom de <span style="color: yellow">GitBash</span> qui nous facilite la vie.
+
+<span style="color: yellow">Git</span> est entièrement personnalisable grâce à la commande <span style="color: yellow">git config</span>, et son option <span style="color: yellow">--global</span> permet de définir la configuration une fois pour tous les projets.
+
+Vérifier que Git est bien disponible et pour afficher sa version :
+````markdown
+git --version
+````
+Sous Windows, le résultat devrait ressembler à ceci:
+````markdown
+git version 2.26.1.windows.1
+````
+Nous pouvons configurer Git pour qu'il utilise notre nom et notre adresse e-mail:
+
+````markdown
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+````
+
+<span style="color: yellow">git config</span> permet de personnaliser l'installation de Git.
+
+<span style="color: yellow">git config --global --list</span> permet d'afficher facilement la configuration globale de Git. Si on voulait afficher la configuration de notre projet, il suffirait d'omettre l'option <span style="color: yellow">--global</span>.
+
+Comment activer l'auto-correction avec help.autocorrect.
+
+````markdown
+git config --global help.autocorrect 1
+````
 
 
-<span style="color: yellow">ls</span>
+<span style="color: lightgreen">d) Premier projet Git.</span>
+
+Pour pouvoir gérer les versions de nos fichiers, nous avons besoin de travailler dans un dépôt Git. 
+
+Crée un dossier.
+````markdown
+mkdir exemple-git
+````
+Allez dans le dossier ainsi crée.
+````markdown
+cd exemple-git
+````
+
+Initialisez le dossier avec la commande <span style="color: yellow">git init</span> afin que <span style="color: yellow">Git</span> en fasse le suivi..
+
+````markdown
+git init
+````
+Crée un fichier README.md.
+
+````markdown
+touch README.md
+````
+Pour créer une nouvelle version de nos fichiers, nous devons ajouter nos fichiers, puis faire un commit. On peut le faire facilement avec les commandes <span style="color: yellow">git add</span> et <span style="color: yellow">git commit</span>.
+````markdown
+                    Ajouter le fichier README.md
+git add README.md
+
+                        Faire un commit.
+-m sert pour mettre un message décrivant le commit.
+git commit -m"Mon premier commit"
+````
+
+Exercice:
+Créez un répertoire que vous appellerez exemple-git et rendez-vous dans ce répertoire
+
+Initialisez-y un dépôt Git
+
+Créez un fichier README.md, ajoutez-y du contenu
+
+Ajoutez et commitez ce fichier
+
+Modifiez le fichier
+
+Ajoutez de nouveau ce fichier et effectuez un commit
+
+Correction:
+````markdown
+mkdir exemple-git && cd $_
+
+git init
+echo -e "# Fichier README.md\n\nIl ne contient pas grand choze." > README.md
+git add README.md
+git commit -m"Mon premier commit"
+
+# On remplace "choze" par "chose" dans le fichier README.md
+sed -i "s/choze/chose/" README.md # Sur Linux/Git Bash
+# sed -i "" -e "s/choze/chose/" README.md # Sur macOS
+git add README.md
+git commit -m"Je corrige la faute de frappe"
+````
 
 
-<span style="color: yellow">ls</span>
 
 
-<span style="color: yellow">ls</span>
 
 
-<span style="color: yellow">ls</span>
