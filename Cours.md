@@ -354,6 +354,100 @@ git add README.md
 git commit -m"Je corrige la faute de frappe"
 ````
 
+### <span style="color: blue">3. Les Bases de Git.</span>
+
+<span style="color: lightgreen">a) Initialiser un dépôt Git.</span>
+
+Pour un nouveau projet, on peut initialiser celui-ci grâce à la commande <span style="color: yellow">git init</span>.
+
+````markdown
+    1. Créer un dossier.
+    mkdir monDossier
+
+    2. Allez dans ce dossier
+    cd monDossier
+
+    3. initialisez le dossier, git va créer un dossier (.git) dans monDossier 
+    git init
+````
+
+Git est basé sur un système de branches. Par défaut, lorsqu'un nouveau dépôt est initialisé, une nouvelle branche est automatiquement créée, intitulée <span style="color: yellow">master</span> branche par défaut.
+
+Pour un projet existant, il convient de disposer de l'URL de celui-ci et de la copier grâce à la commande <span style="color: yellow">git clone</span>.
+
+Allez sur Github, puis cliquez sur (Clone or download), copier l'adresse https dans la fenêtre "Clone with HTTPS", puis allez dans le terminal, tapez git clone puis coller le dépot.
+
+````markdown
+    1. cloner l'adresse du dépôt existant.
+    git clone [url] [nouveau_nom] si on veut renommer le dépôt.
+    git clone https://github.com/git/git.git [nouveau-nom]
+
+    2. Allez dans le répertoire git crée avec la commande.
+    cd git/
+
+    3. Par défaut nous serons positionné sur la branche master
+
+    4. avec la commande git log, on peut voir l'historique du dépot.
+    git log
+
+    5. la commande ls -al, on va lister tout les fichiers même ceux cacher.
+    ls -al
+````
+Si l'on souhaite configurer un autre nom, il convient de l'indiquer au moment de la commande git clone [url] [nouveau_nom].
+
+<span style="color: lightgreen">b) Les modifications en cours.</span>
+
+On vérifie l'état des modifications en cours grâce à la commande <span style="color: yellow">git status</span>.
+
+Tout nouveau fichier créé depuis le dernier commit est considéré comme <span style="color: yellow">non-suivi (untracked)</span>.
+
+Tout fichier modifié depuis le dernier commit est automatiquement considéré comme <span style="color: yellow">suivi (tracked)</span>.
+
+Pour que des modifications soient enregistrées dans un commit, celles-ci doivent au préalable être ajoutées à la zone de staging. C'est le rôle de la commande <span style="color: yellow">git add</span>.
+
+Lorsqu'un fichier est suivi, celui-ci peut se trouver dans trois états différents, à savoir :
+
+- <span style="color: yellow">Non modifié</span>, ou <span style="color: yellow">unmodified</span> : le fichier est suivi par Git, mais n'a pas été modifié depuis le dernier état des lieux,
+
+- <span style="color: yellow">Modifié</span>, ou <span style="color: yellow">modified</span> : le fichier est suivi par Git et a été modifié depuis le dernier état des lieux,
+
+- <span style="color: yellow">Indexé</span>, ou <span style="color: yellow">staged</span> : le fichier a été modifié et ces modifications ont été indexées, mais pas encore enregistrées depuis le dernier état des lieux. Si l'on effectue un <span style="color: yellow">commit</span>, c'est-à-dire une sauvegarde, seuls les fichiers indexés seront modifiés.
+
+````markdown
+    1. Créer un fichier.
+    touch monFichier.txt
+
+    2. Vérifier l'état des modifications.
+    git status
+
+    3. Ajouter le fichier à la zone de staging.
+    add monFichier
+
+    4. Vérifier l'état des modifications.
+    git status
+
+    5. Commit le fichier.
+    git commit -m"commit du fichier, -m pour ajouter un message comme celui-ci"
+````
+
+
+
+<span style="color: lightgreen">c) Manipuler des fichiers.</span>
+
+<span style="color: yellow">fichiers.</span>
+
+<span style="color: lightgreen">d) Ignorer des fichiers.</span>
+
+
+
+<span style="color: lightgreen">e) Comparer des changements.</span>
+
+
+
+<span style="color: lightgreen">f) Valider une modification.</span>
+
+
+
 
 
 
